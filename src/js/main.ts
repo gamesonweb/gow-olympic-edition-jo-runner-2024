@@ -3,7 +3,7 @@ import {RunnerSun} from "./engine/game/world/RunnerSun.ts";
 import RunnerEngine from "./engine/RunnerEngine.ts";
 import WorldMap from "./engine/game/world/WorldMap.ts";
 import {GOWSkybox} from "./engine/game/world/GOWSkybox.ts";
-import {PavementMaterial} from "./materials/PavementMaterial.ts";
+import {PavementMaterial} from "./materials/impl/PavementMaterial.ts";
 // import {GOWMatieralTexture} from "./materials/GOWMaterial.ts";
 
 

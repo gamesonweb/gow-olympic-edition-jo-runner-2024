@@ -1,5 +1,5 @@
 import * as BABYLON from "@babylonjs/core";
-import {PavementMaterial} from "../../../materials/PavementMaterial.ts";
+import {PavementMaterial} from "../../../materials/impl/PavementMaterial.ts";
 import {Mesh, Scene, Vector3} from "@babylonjs/core";
 import WorldBuilding from "./WorldBuilding.ts";
 

@@ -1,14 +1,14 @@
-import {GOWMaterial, GOWMaterialPath} from "./GOWMaterial.ts";
+import {GOWMaterial, GOWMaterialPath} from "../GOWMaterial.ts";
 import * as BABYLON from "@babylonjs/core";
 
-export class GrassMaterial extends GOWMaterial{
+export class PavementMaterial extends GOWMaterial{
 
     constructor(scene :BABYLON.Scene, scale : number ){
-        super(scene,GOWMaterialPath.GLOBAL,"grass", scale, scale,"/grass");
+        super(scene,GOWMaterialPath.GLOBAL,"pavement", scale, scale,"/pavement");
 
         const samplingMode : number = BABYLON.Texture.CUBIC_MODE;
         const specularPower : number = 1000;
-        const parallaxScaleBias : number = 0.15;
+        const parallaxScaleBias : number = 0.05;
         const useParallax = true;
         const useParallaxOcclusion = true;
 
@@ -35,12 +35,12 @@ export class GrassMaterial extends GOWMaterial{
         this.emissiveTexture.vScale = scale;
 
         // AMBIANT TEXTURE --------
-        // this.ambientTexture = new BABYLON.Texture(this.ambiantPath, scene,
-        //     false,false, samplingMode);
-        // // @ts-ignore
-        // this.ambientTexture.uScale = scale;
-        // // @ts-ignore
-        // this.ambientTexture.vScale = scale;
+        this.ambientTexture = new BABYLON.Texture(this.ambiantPath, scene,
+            false,false, samplingMode);
+        // @ts-ignore
+        this.ambientTexture.uScale = scale;
+        // @ts-ignore
+        this.ambientTexture.vScale = scale;
 
 
         // BUMP TEXTURE ----------

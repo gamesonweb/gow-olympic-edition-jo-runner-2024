@@ -1,8 +1,8 @@
 import {Mesh, Scene, Vector3} from "@babylonjs/core";
 import * as BABYLON from "@babylonjs/core";
-import {PavementMaterial} from "../../../materials/PavementMaterial.ts";
-import BuildingFrontMaterial from "../../../materials/BuildingFrontMaterial.ts";
-import {GrassMaterial} from "../../../materials/GrassMaterial.ts";
+import {PavementMaterial} from "../../../materials/impl/PavementMaterial.ts";
+import BuildingFrontMaterial from "../../../materials/impl/BuildingFrontMaterial.ts";
+import {GrassMaterial} from "../../../materials/impl/GrassMaterial.ts";
 
 export default class WorldBuilding{
 

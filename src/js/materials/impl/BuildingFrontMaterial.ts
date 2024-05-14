@@ -1,4 +1,4 @@
-import {GOWMaterial, GOWMaterialPath} from "./GOWMaterial.ts";
+import {GOWMaterial, GOWMaterialPath} from "../GOWMaterial.ts";
 import * as BABYLON from "@babylonjs/core";
 import {Scene} from "@babylonjs/core";
 

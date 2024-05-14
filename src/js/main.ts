@@ -59,10 +59,9 @@ const createScene = function(){
         const currentTime = performance.now(); // ou Date.now();
         const deltaTime = (currentTime - lastTime) / 1000; // Convertir en secondes
 
-        // Mettez à jour le joueur avec le delta time
-        // player.update(deltaTime);
         RunnerEngine.updatePlayers(deltaTime);
-        worldMap.update(deltaTime);
+        RunnerEngine.updateWorldMaps(deltaTime);
+        worldMap.update(deltaTime);//TODO pass this to the updateWorldMaps function
 
 
         // sun.update(deltaTime);

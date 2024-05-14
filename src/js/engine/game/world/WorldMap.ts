@@ -7,6 +7,7 @@ export default class WorldMap{
     private chunks : WorldChunk[];
     private scene : Scene;
     private lastChunkIndex:number = 0
+
     private static HIDDING_OFFSET = 1.25;
     constructor(scene : Scene,displayedChunks : number = 3){
         this.scene = scene;

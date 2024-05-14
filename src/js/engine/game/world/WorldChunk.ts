@@ -2,16 +2,20 @@ import * as BABYLON from "@babylonjs/core";
 import {PavementMaterial} from "../../../materials/impl/PavementMaterial.ts";
 import {Mesh, Scene, Vector3} from "@babylonjs/core";
 import WorldBuilding from "./WorldBuilding.ts";
+import ObstacleABS from "../obstacle/ObstacleABS.ts";
 
 export default class WorldChunk{
     private ground:Mesh;
     private buildings : WorldBuilding[];
     public chunkMesh:Mesh;
 
+    private obstacles : ObstacleABS[];
+
     private index;
     constructor(scene : Scene, position:Vector3 = new Vector3(0,0,0),index:number,leftBuildType:number=1,rightBuildType:number=1) {
         this.index = index;
         this.buildings = [];
+        this.obstacles = [];
         this.ground =  BABYLON.MeshBuilder.CreateGround('ground',{
             height : 1,
             width : 1,
@@ -57,6 +61,10 @@ export default class WorldChunk{
         for(let i = 0 ; i < this.buildings.length ; i++) {
             this.buildings[i].dispose();
         }
+
+        this.obstacles.forEach(obstacle => {
+            obstacle.dispose();
+        })
 
 
     }

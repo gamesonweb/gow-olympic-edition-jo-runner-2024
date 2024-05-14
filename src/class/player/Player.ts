@@ -8,15 +8,19 @@ import Const from "../../const/Const.ts";
 
 export class Player {
     mesh: BABYLON.Mesh;
-    private effects: PlayerEffect;
-    private waterLevel = 100; //MAX 100
+    // private effects: PlayerEffect = null;
+    // private waterLevel = 100; //MAX 100
+
     private inputController: InputController;
+
     private baseVelocity : number;
     private baseDodgeVelocity : number;
     private camera: Camera;
 
+    private isFalling : boolean = false;
 
-    private spamBoost : number;
+
+    // private spamBoost : number = 0;
     // private
 
     constructor(scene: BABYLON.Scene,camera: BABYLON.Camera) {
@@ -65,23 +69,37 @@ export class Player {
         }
         let positionZ = position.z+(this.baseVelocity + spamBoostVelocity)*dt;
         let positionX = position.x;
+        let positionY = position.y;
 
         if (this.inputController.isKeyDown("q")){
             positionX -= (this.baseDodgeVelocity) * dt;
             if (positionX < Const.PLAYER_MIN_X) positionX = Const.PLAYER_MIN_X;
         }
-        if(this.inputController.isKeyDown("s")){
+        if(this.inputController.isKeyDown("s") && !this.isFalling){
             console.log("jump")
+            positionY += 2 * dt;
+
+            if(positionY > Const.PLAYER_MAX_Y){
+                this.isFalling = true;
+                // positionY -= 0.5;
+            }
+
+
         }
         if (this.inputController.isKeyDown("d")){
             positionX +=  this.baseDodgeVelocity * dt;
             if (positionX > Const.PLAYER_MAX_X) positionX = Const.PLAYER_MAX_X;
         }
 
+        //Falling handling
+        if(positionY>Const.PLAYER_MIN_Y) {
+            positionY -= Const.GRAVITY * dt;
+        }else{
+            this.isFalling = false;
+        }
 
 
-
-        this.mesh.position = new Vector3(positionX, position.y,positionZ);
+        this.mesh.position = new Vector3(positionX,positionY,positionZ);
         // console.log(1/dt);
 
     }

@@ -8,6 +8,7 @@ export default class WorldBuilding{
 
     private frontPanel : Mesh;
     private ground : Mesh;
+    public building : Mesh;
     private height : number;
 
     constructor(scene: Scene,position:Vector3,height:number = 0.5 ,buildingType:number=0,isFacingLeft:boolean = true) {
@@ -25,7 +26,7 @@ export default class WorldBuilding{
         this.ground = BABYLON.MeshBuilder.CreateGround('buildingGround',{
             height : 1,
             width : 4,
-            subdivisions : 1
+            subdivisions : 2
         })
         this.ground.material = new GrassMaterial(scene,15);
 
@@ -42,6 +43,11 @@ export default class WorldBuilding{
 
         let material = new BuildingFrontMaterial(scene,buildingType,-1);
         this.frontPanel.material = material;
+
+
+        // @ts-ignore
+        this.building = BABYLON.Mesh.MergeMeshes([this.ground, this.frontPanel],
+            true, false, null, false, true);
 
 
 

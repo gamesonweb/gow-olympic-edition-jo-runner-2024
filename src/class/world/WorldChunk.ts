@@ -6,6 +6,8 @@ import WorldBuilding from "./WorldBuilding.ts";
 export default class WorldChunk{
     private ground:Mesh;
     private buildings : WorldBuilding[];
+    public chunkMesh:Mesh;
+
     private index;
     constructor(scene : Scene, position:Vector3 = new Vector3(0,0,0),index:number,leftBuildType:number=1,rightBuildType:number=1) {
         this.index = index;
@@ -38,7 +40,9 @@ export default class WorldChunk{
             rightBuildType,
             false));
 
-        // @ts-ignore
+
+        this.chunkMesh = BABYLON.Mesh.MergeMeshes([this.buildings[0].building,this.buildings[1].building,this.ground],
+            true, false, null, false, true);
     }
 
     getZ() {
@@ -48,9 +52,11 @@ export default class WorldChunk{
     remove() {
         // console.log("remove");
         this.ground.dispose();
+        this.chunkMesh.dispose();
         for(let i = 0 ; i < this.buildings.length ; i++) {
             this.buildings[i].dispose();
         }
+
 
     }
 

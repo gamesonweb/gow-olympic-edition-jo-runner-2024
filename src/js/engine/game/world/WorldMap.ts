@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import WorldChunk from "./WorldChunk.ts";
 import {Scene, Vector3} from "@babylonjs/core";
-import RunnerEngine from "../../js/engine/RunnerEngine.ts";
+import RunnerEngine from "../../RunnerEngine.ts";
 
 export default class WorldMap{
     private chunks : WorldChunk[];

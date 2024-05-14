@@ -1,9 +1,9 @@
 // Player.ts
 import * as BABYLON from '@babylonjs/core';
 import {Camera, Vector3} from "@babylonjs/core";
-import {InputController} from "../InputController.ts";
+import {InputController} from "../../../helper/InputController.ts";
 // import PlayerEffect from "../PlayerEffect.ts";
-import Const from "../../js/const/Const.ts";
+import Const from "../../../const/Const.ts";
 
 
 export class Player {

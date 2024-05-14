@@ -3,6 +3,7 @@ import * as BABYLON from '@babylonjs/core';
 import {Camera, Nullable, Vector3} from "@babylonjs/core";
 import {InputController} from "../InputController.ts";
 import PlayerEffect from "../PlayerEffect.ts";
+import Const from "../../const/Const.ts";
 
 
 export class Player {
@@ -67,12 +68,14 @@ export class Player {
 
         if (this.inputController.isKeyDown("q")){
             positionX -= (this.baseDodgeVelocity) * dt;
+            if (positionX < Const.PLAYER_MIN_X) positionX = Const.PLAYER_MIN_X;
         }
         if(this.inputController.isKeyDown("s")){
             console.log("jump")
         }
         if (this.inputController.isKeyDown("d")){
             positionX +=  this.baseDodgeVelocity * dt;
+            if (positionX > Const.PLAYER_MAX_X) positionX = Const.PLAYER_MAX_X;
         }
 
 

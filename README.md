@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-todo
-=======
 # GOW2024
 
 install
@@ -15,4 +12,4 @@ npm run dev
 ## Env
 - Webstorm
 - Github
->>>>>>> Stashed changes
+

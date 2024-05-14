@@ -1,5 +1,5 @@
 import * as BABYLON from "@babylonjs/core";
-import {PavementMaterial} from "../../materials/PavementMaterial.ts";
+import {PavementMaterial} from "../../js/materials/PavementMaterial.ts";
 import {Mesh, Scene, Vector3} from "@babylonjs/core";
 import WorldBuilding from "./WorldBuilding.ts";
 
@@ -41,6 +41,7 @@ export default class WorldChunk{
             false));
 
 
+        // @ts-ignore
         this.chunkMesh = BABYLON.Mesh.MergeMeshes([this.buildings[0].building,this.buildings[1].building,this.ground],
             true, false, null, false, true);
     }

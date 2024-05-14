@@ -1,9 +1,9 @@
 // Player.ts
 import * as BABYLON from '@babylonjs/core';
-import {Camera, Nullable, Vector3} from "@babylonjs/core";
+import {Camera, Vector3} from "@babylonjs/core";
 import {InputController} from "../InputController.ts";
-import PlayerEffect from "../PlayerEffect.ts";
-import Const from "../../const/Const.ts";
+// import PlayerEffect from "../PlayerEffect.ts";
+import Const from "../../js/const/Const.ts";
 
 
 export class Player {
@@ -36,11 +36,11 @@ export class Player {
         this.camera.maxZ = 100;
         this.camera.minZ = 0.01;
         // this.mesh.renderingGroupId = 2;
-        this.mesh.position = new Vector3(0,0.04,0) // Y hauteur
+        this.mesh.position = new Vector3(0,Const.PLAYER_MIN_Y,0) // Y hauteur
         const angle = Math.PI / 45 ; // Angle d'inclinaison en radians
         this.inputController = new InputController(scene);
         this.baseVelocity = 0.5;
-        this.baseDodgeVelocity = 0.7;
+        this.baseDodgeVelocity = 0.8;
         this.mesh.rotate(BABYLON.Axis.X, angle, BABYLON.Space.LOCAL);
         // this.mesh.receiveShadows =true;
 

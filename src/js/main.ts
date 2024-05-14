@@ -1,8 +1,8 @@
 import * as BABYLON from '@babylonjs/core';
-import {RunnerSun} from "./class/RunnerSun.ts";
+import {RunnerSun} from "../class/RunnerSun.ts";
 import RunnerEngine from "./engine/RunnerEngine.ts";
-import WorldMap from "./class/world/WorldMap.ts";
-import {GOWSkybox} from "./class/GOWSkybox.ts";
+import WorldMap from "../class/world/WorldMap.ts";
+import {GOWSkybox} from "../class/GOWSkybox.ts";
 import {PavementMaterial} from "./materials/PavementMaterial.ts";
 // import {GOWMatieralTexture} from "./materials/GOWMaterial.ts";
 

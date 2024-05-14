@@ -1,6 +1,6 @@
 import {Scene} from "@babylonjs/core";
 import * as BABYLON from '@babylonjs/core';
-import {PathHelper} from "../helper/PathHelper.ts";
+import {PathHelper} from "../js/helper/PathHelper.ts";
 
 export class GOWSkybox{
 

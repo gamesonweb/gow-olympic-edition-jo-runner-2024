@@ -3,6 +3,7 @@ import {PavementMaterial} from "../../../materials/impl/PavementMaterial.ts";
 import {Mesh, Scene, Vector3} from "@babylonjs/core";
 import WorldBuilding from "./WorldBuilding.ts";
 import ObstacleABS from "../obstacle/ObstacleABS.ts";
+import MudPuddleOBS from "../obstacle/impl/MudPuddleOBS.ts";
 
 export default class WorldChunk{
     private ground:Mesh;
@@ -44,6 +45,9 @@ export default class WorldChunk{
             rightBuildType,
             false));
 
+
+        //Adding test mud
+        const mud = new MudPuddleOBS(scene,new Vector3(position.x, position.y+0.001,position.z));
 
         // @ts-ignore
         this.chunkMesh = BABYLON.Mesh.MergeMeshes([this.buildings[0].building,this.buildings[1].building,this.ground],

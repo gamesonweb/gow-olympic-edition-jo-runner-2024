@@ -3,10 +3,10 @@ import * as BABYLON from "@babylonjs/core";
 import {Scene} from "@babylonjs/core";
 
 
-export default class BuildingFrontMaterial extends  GOWMaterial {
+export default class MudMaterial extends  GOWMaterial {
 
-    constructor(scene: Scene, index:number, scale:number) {
-        super(scene,GOWMaterialPath.BUILDING, "building_"+index, scale, scale,"/front");
+    constructor(scene: Scene, scale:number) {
+        super(scene,GOWMaterialPath.PENALITY, "mud", scale, scale,"/mud");
         // this.mainPath = PathHelper.texturePath +"/map/building/building_2/";
 
 
@@ -21,6 +21,6 @@ export default class BuildingFrontMaterial extends  GOWMaterial {
         this.diffuseTexture.hasAlpha = true;
 
         // this.diffuseTexture.
-        // console.log(this.diffusePath)//s
+        console.log(this.diffusePath)//s
     }
 }

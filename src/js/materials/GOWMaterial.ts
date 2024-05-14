@@ -71,5 +71,6 @@ export enum GOWMaterialPath{
     ENTITY = "entity",
     GLOBAL = "global",
     BUILDING = "building",
-    BOOSTER = "booster"
+    BOOSTER = "booster",
+    PENALITY = "penality"
 }

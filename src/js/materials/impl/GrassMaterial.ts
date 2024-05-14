@@ -12,7 +12,7 @@ export class GrassMaterial extends GOWMaterial{
         const useParallax = true;
         const useParallaxOcclusion = true;
 
-        console.log(this.diffusePath)
+        // console.log(this.diffusePath)
         const diffuse: BABYLON.Texture    =  new BABYLON.Texture(this.diffusePath, scene,
             false,false,samplingMode );
         this.diffuseTexture =  diffuse;

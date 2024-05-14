@@ -1,8 +1,11 @@
-import {Vector3} from "@babylonjs/core";
+import {Mesh, Vector3} from "@babylonjs/core";
 import {Player} from "../player/Player.ts";
 
 export default abstract class ObstacleABS {
     protected position : Vector3;
+    protected mesh : Mesh;
+
+    protected hasBeenTouched : boolean;
 
 
 
@@ -15,6 +18,6 @@ export default abstract class ObstacleABS {
     }
 
     dispose() {
-
+        this.mesh.dispose();
     }
 }

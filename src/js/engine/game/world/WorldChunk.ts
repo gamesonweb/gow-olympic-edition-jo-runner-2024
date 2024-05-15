@@ -48,6 +48,7 @@ export default class WorldChunk{
 
         //Adding test mud
         const mud = new MudPuddleOBS(scene,new Vector3(position.x, position.y+0.001,position.z));
+        this.obstacles.push(mud)
 
         // @ts-ignore
         this.chunkMesh = BABYLON.Mesh.MergeMeshes([this.buildings[0].building,this.buildings[1].building,this.ground],

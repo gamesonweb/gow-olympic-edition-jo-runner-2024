@@ -21,6 +21,6 @@ export default class MudMaterial extends  GOWMaterial {
         this.diffuseTexture.hasAlpha = true;
 
         // this.diffuseTexture.
-        console.log(this.diffusePath)//s
+        // console.log(this.diffusePath)//s
     }
 }

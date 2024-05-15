@@ -1,5 +1,5 @@
 import './ui.css';
-import StatBar from "./StatBar.jsx";
+import StatBar from "./bar/StatBar.jsx";
 export default function UI(){
     return (
         <div className={"ui"}>

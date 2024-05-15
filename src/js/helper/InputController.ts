@@ -19,6 +19,10 @@ export class InputController {
     }
 
     public isKeyDown(key: string): boolean {
-        return this._keys[key] === true;
+        return this._keys[key];
+    }
+
+    public isKeyUp(key: string): boolean {
+        return !this._keys[key];
     }
 }

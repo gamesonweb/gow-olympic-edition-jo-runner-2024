@@ -4,6 +4,7 @@ import {Camera, Vector3} from "@babylonjs/core";
 import {InputController} from "../../../helper/InputController.ts";
 // import PlayerEffect from "../PlayerEffect.ts";
 import Const from "../../../const/Const.ts";
+import SpamBoost from "./SpamBoost.ts";
 
 
 export class Player {
@@ -20,7 +21,7 @@ export class Player {
     private isFalling : boolean = false;
 
 
-    // private spamBoost : number = 0;
+    private spamBoost : SpamBoost = new SpamBoost();
     // private
 
     constructor(scene: BABYLON.Scene,camera: BABYLON.Camera) {
@@ -52,8 +53,8 @@ export class Player {
     }
 
     public update(dt : number): void {
-
-        let spamBoostVelocity = 0.0;
+        //Decrease spam boost
+        this.spamBoost.update(dt);
 
 
         const position : BABYLON.Vector3 = this.mesh.position;
@@ -65,9 +66,13 @@ export class Player {
         //Spam Boost
         if (this.inputController.isKeyDown("z")){
             console.log("spamBoost")
-            spamBoostVelocity+=5;
+            this.spamBoost.spam(dt);
+        }else {
+            this.spamBoost.unspam(dt);
         }
-        let positionZ = position.z+(this.baseVelocity + spamBoostVelocity)*dt;
+
+
+        let positionZ = position.z+(this.baseVelocity + this.spamBoost.getValue())*dt;
         let positionX = position.x;
         let positionY = position.y;
 
@@ -76,7 +81,7 @@ export class Player {
             if (positionX < Const.PLAYER_MIN_X) positionX = Const.PLAYER_MIN_X;
         }
         if(this.inputController.isKeyDown("s") && !this.isFalling){
-            console.log("jump")
+            // console.log("jump")
             positionY += 2 * dt;
 
             if(positionY > Const.PLAYER_MAX_Y){
@@ -100,6 +105,8 @@ export class Player {
 
 
         this.mesh.position = new Vector3(positionX,positionY,positionZ);
+
+
         // console.log(1/dt);
 
     }

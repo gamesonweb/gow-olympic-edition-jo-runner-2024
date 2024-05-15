@@ -1,11 +1,51 @@
 .ui{
     position: absolute;
-    background-color: #00000094;
-    width: 100%;
-    height: 10%;
-    top: 0;
+    /* background-color: #00000094; */
+    width: 99%;
+    height: 99%;
+    bottom: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none;
+    padding: 1%;
+    justify-content: space-between;
 }
 
+.barContainer{
+    display: flex;
+    height: 150px;
+    width: 50px;
+    flex-direction: row;
+    gap: 10px;
+
+    .statBar{
+        display: flex;
+        width: 15px;
+        height: 150px;
+        background-color: #0000001a;;
+        border-radius: 8px;
+        backdrop-filter: blur(10px);
+
+        .value{
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+        }
+    }
+}
+
+
+
+.distance{
+
+    & p{
+        color: white;
+        font-weight: bolder;
+    }
+
+}
 
 .babylonFrame{
     position: relative;

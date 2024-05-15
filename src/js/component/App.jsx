@@ -6,8 +6,8 @@ export default function App() {
     // @ts-ignore
     return (
         <div className="App">
-            <Menu/>
-            {/*<BabylonFrame id={"renderCanvas"}/>*/}
+            {/*<Menu/>*/}
+            <BabylonFrame id={"renderCanvas"}/>
             {/*<BabylonFrame id={"renderCanvas"}/>*/}
         </div>
     );

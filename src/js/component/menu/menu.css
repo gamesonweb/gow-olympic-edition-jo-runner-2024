@@ -37,6 +37,8 @@
             border-radius: 8px;
             background-color: #282828;
             color: #f4f8fc;
+            user-select: none;
+            pointer-events: none;
             box-shadow: 0px 4px 8px -5px black, 0px 7px 11px -8px white inset;
 
 
@@ -44,6 +46,12 @@
                 background-color: #3c3c3c;
                 color: #f4f8fc;
                 cursor: pointer;
+            }
+
+            &:active{
+                box-shadow: inset 0px 4px 8px -5px black, 0px -7px 0px -8px white inset;
+                background-color: #e4e4e4;
+                color:#282828;
             }
         }
     }

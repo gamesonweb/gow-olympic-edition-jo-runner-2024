@@ -17,7 +17,9 @@ html, body{
 }
 
 #app{
+    min-width: 1000px;
     width: 100vw;
     height: 100vh;
-    background-color: aquamarine;
+    background-color: #d2d9e0;
+    display: flex;
 }

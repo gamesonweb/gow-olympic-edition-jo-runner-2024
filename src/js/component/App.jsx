@@ -1,12 +1,14 @@
 import React from "react";
-import BabylonScene from './BabylonScene';
 import BabylonFrame from "./BabylonFrame.jsx";
+import Menu from "./menu/Menu.jsx";
 
 export default function App() {
     // @ts-ignore
     return (
         <div className="App">
-            <BabylonFrame id={"renderCanvas"}/>
+            <Menu/>
+            {/*<BabylonFrame id={"renderCanvas"}/>*/}
+            {/*<BabylonFrame id={"renderCanvas"}/>*/}
         </div>
     );
 };

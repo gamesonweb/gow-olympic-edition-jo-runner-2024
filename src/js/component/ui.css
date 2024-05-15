@@ -1,0 +1,13 @@
+.ui{
+    position: absolute;
+    background-color: #00000094;
+    width: 100%;
+    height: 10%;
+    top: 0;
+}
+
+
+.babylonFrame{
+    position: relative;
+    background-color: black;
+}

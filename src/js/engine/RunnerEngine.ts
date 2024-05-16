@@ -2,6 +2,7 @@ import {Player} from "./game/player/Player.ts";
 import {Scene} from "@babylonjs/core";
 import * as BABYLON from "@babylonjs/core";
 import WorldMap from "./game/world/WorldMap.ts";
+import UI from "../ui/UI.ts";
 
 export default class RunnerEngine {
     private static players : Player[] = [];
@@ -13,6 +14,7 @@ export default class RunnerEngine {
             scene.addCamera(camera);
             RunnerEngine.players.push(new Player(scene,camera))
         }
+        UI.init();
     }
 
 

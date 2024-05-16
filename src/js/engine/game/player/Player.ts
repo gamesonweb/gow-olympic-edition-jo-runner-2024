@@ -5,6 +5,7 @@ import {InputController} from "../../../helper/InputController.ts";
 // import PlayerEffect from "../PlayerEffect.ts";
 import Const from "../../../const/Const.ts";
 import SpamBoost from "./SpamBoost.ts";
+import UI from "../../../ui/UI.ts";
 
 
 export class Player {
@@ -40,7 +41,7 @@ export class Player {
         this.mesh.position = new Vector3(0,Const.PLAYER_MIN_Y,0) // Y hauteur
         const angle = Math.PI / 45 ; // Angle d'inclinaison en radians
         this.inputController = new InputController(scene);
-        this.baseVelocity = 0.5;
+        this.baseVelocity = 0.2;
         this.baseDodgeVelocity = 0.8;
         this.mesh.rotate(BABYLON.Axis.X, angle, BABYLON.Space.LOCAL);
         // this.mesh.receiveShadows =true;
@@ -105,6 +106,8 @@ export class Player {
 
 
         this.mesh.position = new Vector3(positionX,positionY,positionZ);
+        UI.setDistanceValue(positionZ);
+        UI.setBoostLevel(this.spamBoost.getValue());
 
 
         // console.log(1/dt);

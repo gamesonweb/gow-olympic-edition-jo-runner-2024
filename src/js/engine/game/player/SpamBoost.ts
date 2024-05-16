@@ -1,11 +1,11 @@
 export default class SpamBoost{
 
-    private min : number = 0;
+    public static MIN : number = 0;
     private value : number = 0;
-    private max : number = 2;//15
+    public static MAX : number = 3;//15
 
-    private valueIncrease : number = 18.5;
-    private valueDecrease : number = 2.5;
+    private valueIncrease : number = 15.5;
+    private valueDecrease : number = 1.5;
 
 
 
@@ -21,8 +21,16 @@ export default class SpamBoost{
     spam(dt:number){
         if (this.hasBeendReleased){
             this.lastSpam = dt;
-            this.value += this.valueIncrease * dt;
-            if (this.value > this.max) this.value = this.max;
+
+            let increase = this.valueIncrease
+            if (this.value <= SpamBoost.MAX/4){
+                increase *= 2;
+            }else if (this.value >= SpamBoost.MAX/3){
+                increase /= 1.2 ;
+            }
+
+            this.value += increase * dt;
+            if (this.value > SpamBoost.MAX) this.value = SpamBoost.MAX;
             this.hasBeendReleased = false;
         }
 
@@ -38,10 +46,10 @@ export default class SpamBoost{
         this.decreaseAccumulator += dt;
         if (this.decreaseAccumulator >= this.spamInterval ){
             this.value -= this.valueDecrease * dt;
-            if (this.value < this.min) this.value = this.min;
+            if (this.value < SpamBoost.MIN) this.value = SpamBoost.MIN;
             this.decreaseAccumulator = 0.0;
         }
-        console.log(this.value)
+        // console.log(this.value)
 
     }
 

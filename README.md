@@ -51,7 +51,7 @@ C'est simple, les jeux se lancent 15 secondes après le début du jeu. Dès qu'u
 
 #### Quels seront les challenges durant les courses ?
 
-Ils apparaîtront de façon aléatoire. Les challenges seront choisis dans une pool de 8 mini-jeux.
+Ils apparaîtront de façon aléatoire. Les challenges seront choisis dans un pool de 8 mini-jeux.
 
 - **Football :** le sol se transforme en terrain de foot, un gros ballon rebondit rapidement sur les murs. Ses rebonds sont aléatoires. Le joueur doit esquiver le ballon sous peine de ralentir.
 - **Haltérophilie :** les gars dans les salles de sport laissent toujours leurs poids au sol. Évitez-les pour ne pas trébucher et perdre de la vitesse.

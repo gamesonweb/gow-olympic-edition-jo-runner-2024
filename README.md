@@ -17,7 +17,7 @@ npm run dev
 
 ### JO Runner 2024, par GRUAU ELYAN, PATUREAU ROMAIN, et TILLE LOGANN en Licence 3 MIAGE NICE
 
-#### Qu'est-ce que ce jeu ?
+#### Quel est le but du jeu ?
 
 JO Runner 2024 est un jeu en 1 contre 1. Les deux joueurs doivent jouer sur la même machine, sur le même écran, et surtout sur le même clavier.
 

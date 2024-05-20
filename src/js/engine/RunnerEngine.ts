@@ -12,7 +12,10 @@ export default class RunnerEngine {
         for (let i = 0; i < playerQTY; i++){
             const camera = new BABYLON.UniversalCamera("playerCamera_"+i, new BABYLON.Vector3(0, 0.20, -1), scene);
             scene.addCamera(camera);
-            RunnerEngine.players.push(new Player(scene,camera))
+            camera.viewport = new BABYLON.Viewport(0.5*i, 0.0, 0.5, 1);
+            // @ts-ignore
+            scene.activeCameras.push(camera);
+            RunnerEngine.players.push(new Player(scene,camera,i))
         }
         UI.init();
     }

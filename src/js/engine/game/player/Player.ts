@@ -6,6 +6,7 @@ import {InputController} from "../../../helper/InputController.ts";
 import Const from "../../../const/Const.ts";
 import SpamBoost from "./SpamBoost.ts";
 import UI from "../../../ui/UI.ts";
+import KeyMap from "./KeyMap.ts";
 
 
 export class Player {
@@ -23,10 +24,13 @@ export class Player {
 
 
     private spamBoost : SpamBoost = new SpamBoost();
+    private playerIndex = -1;
+    private keyMap : KeyMap = null;
     // private
 
-    constructor(scene: BABYLON.Scene,camera: BABYLON.Camera) {
+    constructor(scene: BABYLON.Scene,camera: BABYLON.Camera,index: number) {
         // this.mesh = BABYLON.MeshBuilder.CreateBox('playerBox', { size: 0.1}, scene);
+        this.playerIndex = index;
         this.mesh = BABYLON.MeshBuilder.CreatePlane('playerBox',
             {
                 size: 0.1,
@@ -51,6 +55,13 @@ export class Player {
         // positionGizmo.attachedMesh = this.mesh;
 
         // Ajoutez ici la logique pour positionner le joueur, ajouter des animations, etc.
+        if (this.playerIndex==0){
+            console.log("p1")
+            this.keyMap = new KeyMap("z","q","d","s")
+        }else{
+            console.log("p2")
+            this.keyMap = new KeyMap("u","h","k","j")
+        }
     }
 
     public update(dt : number): void {
@@ -65,7 +76,7 @@ export class Player {
 
 
         //Spam Boost
-        if (this.inputController.isKeyDown("z")){
+        if (this.inputController.isKeyDown(this.keyMap.boost)){
             console.log("spamBoost")
             this.spamBoost.spam(dt);
         }else {
@@ -77,11 +88,11 @@ export class Player {
         let positionX = position.x;
         let positionY = position.y;
 
-        if (this.inputController.isKeyDown("q")){
+        if (this.inputController.isKeyDown(this.keyMap.left)){
             positionX -= (this.baseDodgeVelocity) * dt;
             if (positionX < Const.PLAYER_MIN_X) positionX = Const.PLAYER_MIN_X;
         }
-        if(this.inputController.isKeyDown("s") && !this.isFalling){
+        if(this.inputController.isKeyDown(this.keyMap.jump) && !this.isFalling){
             // console.log("jump")
             positionY += 2 * dt;
 
@@ -92,7 +103,7 @@ export class Player {
 
 
         }
-        if (this.inputController.isKeyDown("d")){
+        if (this.inputController.isKeyDown(this.keyMap.right)){
             positionX +=  this.baseDodgeVelocity * dt;
             if (positionX > Const.PLAYER_MAX_X) positionX = Const.PLAYER_MAX_X;
         }

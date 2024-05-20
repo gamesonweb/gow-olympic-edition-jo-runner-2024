@@ -22,7 +22,7 @@ const createScene = function(){
     scene.fogEnabled = true;
     // scene.createDefaultCameraOrLight(true, false,true);
 
-    RunnerEngine.init(scene,1);
+    RunnerEngine.init(scene,2);
     const worldMap : WorldMap = new WorldMap(scene,20);
 
 

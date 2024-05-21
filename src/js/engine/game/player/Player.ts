@@ -20,6 +20,7 @@ export class Player {
     private baseDodgeVelocity : number;
     private camera: Camera;
 
+    private jumpVelocity : number = Const.PLAYER_JUMP_VELOCITY;
     private isFalling : boolean = false;
 
 
@@ -92,29 +93,41 @@ export class Player {
             positionX -= (this.baseDodgeVelocity) * dt;
             if (positionX < Const.PLAYER_MIN_X) positionX = Const.PLAYER_MIN_X;
         }
-        if(this.inputController.isKeyDown(this.keyMap.jump) && !this.isFalling){
-            // console.log("jump")
-            positionY += 2 * dt;
 
-            if(positionY > Const.PLAYER_MAX_Y){
-                this.isFalling = true;
-                // positionY -= 0.5;
-            }
-
-
-        }
         if (this.inputController.isKeyDown(this.keyMap.right)){
             positionX +=  this.baseDodgeVelocity * dt;
             if (positionX > Const.PLAYER_MAX_X) positionX = Const.PLAYER_MAX_X;
         }
 
-        //Falling handling
-        if(positionY>Const.PLAYER_MIN_Y) {
-            positionY -= (Const.GRAVITY * dt) ; //* (Const.PLAYER_MAX_Y/positionY*0.3)
-        }else{
-            this.isFalling = false;
-            positionY = Const.PLAYER_MIN_Y;
+
+        if(this.inputController.isKeyDown(this.keyMap.jump) && !this.isFalling){
+            positionY += this.jumpVelocity * dt;
+            this.jumpVelocity *= Const.GRAVITY;
+
+            if(this.jumpVelocity < 0.3){
+                this.isFalling = true;
+            }
         }
+
+        if (this.inputController.isKeyUp(this.keyMap.jump) && positionY > Const.PLAYER_MIN_Y) {
+            this.isFalling = true;
+        }
+
+
+        //Falling handling
+        if (this.isFalling) {
+            if (this.jumpVelocity > 0) this.jumpVelocity = -0.15;
+            if(positionY > Const.PLAYER_MIN_Y) {
+                positionY += (this.jumpVelocity * dt) ; //* (Const.PLAYER_MAX_Y/positionY*0.3)
+                this.jumpVelocity *= (2-Const.GRAVITY)
+
+            }else{
+                this.isFalling = false;
+                positionY = Const.PLAYER_MIN_Y;
+                this.jumpVelocity = Const.PLAYER_JUMP_VELOCITY;
+            }
+        }
+
 
 
         this.mesh.position = new Vector3(positionX,positionY,positionZ);

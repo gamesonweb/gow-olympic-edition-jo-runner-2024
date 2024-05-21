@@ -113,6 +113,7 @@ export class Player {
             positionY -= (Const.GRAVITY * dt) ; //* (Const.PLAYER_MAX_Y/positionY*0.3)
         }else{
             this.isFalling = false;
+            positionY = Const.PLAYER_MIN_Y;
         }
 
 

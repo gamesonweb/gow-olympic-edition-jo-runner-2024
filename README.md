@@ -20,6 +20,7 @@ npm run dev
 #### Quel est le but du jeu ?
 
 JO Runner 2024 est un jeu en 1 contre 1. Les deux joueurs doivent jouer sur la même machine, sur le même écran, et surtout sur le même clavier.
+Le joueur qui atteindra le fin du parcours (1000M) en premier sera declaré gagnant !
 
 #### Mais les joueurs ne risquent-ils pas de se gêner ?
 

@@ -7,15 +7,18 @@ export default class UI{
 
 
     static init(){
-        this.distanceElements.push(
-            document.querySelector(".distance .value")//TODO ADD THE SECOND ONE
-        );
-        this.waterLevelElements.push(
-            document.querySelector(".statBar.water .value")//TODO ADD THE SECOND ONE
-        );
-        this.boostLevelElements.push(
-            document.querySelector(".statBar.boost .value")//TODO ADD THE SECOND ONE
-        );
+        const playerAmount = 2;
+        for (let i = 0; i < playerAmount; i++) {
+            this.distanceElements.push(
+                document.querySelector("#playerUI_"+i+" .distance .value")//TODO ADD THE SECOND ONE
+            );
+            this.waterLevelElements.push(
+                document.querySelector("#playerUI_"+i+" .statBar.water .value")//TODO ADD THE SECOND ONE
+            );
+            this.boostLevelElements.push(
+                document.querySelector("#playerUI_"+i+" .statBar.boost .value")//TODO ADD THE SECOND ONE
+            );
+        }
     }
 
 

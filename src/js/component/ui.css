@@ -6,7 +6,7 @@
     bottom: 0px;
     left: 0px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
     pointer-events: none;
     padding: 1%;
@@ -56,4 +56,10 @@
 .babylonFrame{
     position: relative;
     background-color: black;
+}
+
+.playerUI{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

@@ -131,8 +131,8 @@ export class Player {
 
 
         this.mesh.position = new Vector3(positionX,positionY,positionZ);
-        UI.setDistanceValue(positionZ);
-        UI.setBoostLevel(this.spamBoost.getValue());
+        UI.setDistanceValue(positionZ,this.playerIndex);
+        UI.setBoostLevel(this.spamBoost.getValue(),this.playerIndex);
 
 
         // console.log(1/dt);

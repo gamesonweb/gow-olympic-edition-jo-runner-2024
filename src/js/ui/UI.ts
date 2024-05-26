@@ -7,16 +7,16 @@ export default class UI{
 
 
     static init(){
-        const playerAmount = 2;
+        const playerAmount = 2;//TODO LINK with the actuel amount of player
         for (let i = 0; i < playerAmount; i++) {
             this.distanceElements.push(
-                document.querySelector("#playerUI_"+i+" .distance .value")//TODO ADD THE SECOND ONE
+                document.querySelector("#playerUI_"+i+" .distance .value")
             );
             this.waterLevelElements.push(
-                document.querySelector("#playerUI_"+i+" .statBar.water .value")//TODO ADD THE SECOND ONE
+                document.querySelector("#playerUI_"+i+" .statBar.water .value")
             );
             this.boostLevelElements.push(
-                document.querySelector("#playerUI_"+i+" .statBar.boost .value")//TODO ADD THE SECOND ONE
+                document.querySelector("#playerUI_"+i+" .statBar.boost .value")
             );
         }
     }
@@ -27,7 +27,7 @@ export default class UI{
     }
 
     static setWaterLevel(value:number,playerIndex:number = 0){
-        this.waterLevelElements[playerIndex].style.height = String(Math.floor(value));
+        this.waterLevelElements[playerIndex].style.height = String(Math.floor(value)+"%");
     }
 
     static setBoostLevel(value:number,playerIndex:number = 0){

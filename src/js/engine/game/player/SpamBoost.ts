@@ -60,4 +60,8 @@ export default class SpamBoost{
     hasBeenSpammed(){
         return this.hasBeendReleased;
     }
+
+    getPercent(){
+        return this.value/ SpamBoost.MAX * 100;
+    }
 }

@@ -12,7 +12,7 @@ import KeyMap from "./KeyMap.ts";
 export class Player {
     mesh: BABYLON.Mesh;
     // private effects: PlayerEffect = null;
-    // private waterLevel = 100; //MAX 100
+    private waterLevel = 100; //MAX 100
 
     private inputController: InputController;
 
@@ -77,7 +77,7 @@ export class Player {
 
 
         //Spam Boost
-        if (this.inputController.isKeyDown(this.keyMap.boost)){
+        if (this.inputController.isKeyDown(this.keyMap.boost) && this.waterLevel>=0){
             console.log("spamBoost")
             this.spamBoost.spam(dt);
         }else {
@@ -89,17 +89,19 @@ export class Player {
         let positionX = position.x;
         let positionY = position.y;
 
+        //GOING LEFT
         if (this.inputController.isKeyDown(this.keyMap.left)){
             positionX -= (this.baseDodgeVelocity) * dt;
             if (positionX < Const.PLAYER_MIN_X) positionX = Const.PLAYER_MIN_X;
         }
 
+        //GOING RIGHT
         if (this.inputController.isKeyDown(this.keyMap.right)){
             positionX +=  this.baseDodgeVelocity * dt;
             if (positionX > Const.PLAYER_MAX_X) positionX = Const.PLAYER_MAX_X;
         }
 
-
+        //JUMPING
         if(this.inputController.isKeyDown(this.keyMap.jump) && !this.isFalling){
             positionY += this.jumpVelocity * dt;
             this.jumpVelocity *= Const.GRAVITY;
@@ -129,10 +131,17 @@ export class Player {
         }
 
 
+        //Water level variation
+        const spamBoostPercent = this.spamBoost.getPercent();
+        if (this.waterLevel>0){
+            this.waterLevel -= spamBoostPercent * dt * 0.02 + 0.001;
+            // console.log(this.waterLevel)
+        }
 
         this.mesh.position = new Vector3(positionX,positionY,positionZ);
         UI.setDistanceValue(positionZ,this.playerIndex);
         UI.setBoostLevel(this.spamBoost.getValue(),this.playerIndex);
+        UI.setWaterLevel(this.waterLevel,this.playerIndex);
 
 
         // console.log(1/dt);

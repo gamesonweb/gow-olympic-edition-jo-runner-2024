@@ -25,4 +25,25 @@ export class InputController {
     public isKeyUp(key: string): boolean {
         return !this._keys[key];
     }
+
+    static detectKeyboardLayout() {
+        let testElement = document.createElement('input');
+        testElement.type = 'text';
+        document.body.appendChild(testElement);
+        testElement.focus();
+
+        let layout = 'QWERTY';
+        testElement.addEventListener('keydown', function(event) {
+            if (event.key === 'a' || event.key === 'q') {
+                layout = (event.key === 'a') ? 'QWERTY' : 'AZERTY';
+                testElement.remove();
+            }
+        });
+
+        // Simuler une touche pour déterminer le layout
+        let e = new KeyboardEvent('keydown', { key: 'a' });
+        testElement.dispatchEvent(e);
+
+        return layout;
+    }
 }

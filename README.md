@@ -31,10 +31,10 @@ C'est bien là le but ! Les joueurs sont coudes à coudes, se battant pour gagne
 Les deux joueurs se placent côte à côte, face au clavier, de manière à ce que chacun ait accès aux touches. Ils peuvent modifier leurs touches dans les paramètres "joueur 1" et "joueur 2" sur la page principale du jeu. Une fois prêts, ils peuvent commencer à jouer.
 
 **Keymap de base :**
-- [Z] ou [^] pour accélérer (en mode tryhard sur le bouton)
-- [Q] ou [<] pour aller à gauche 
-- [D] ou [>] pour aller à droite
-- [S] ou [∨] pour sauter/esquiver 
+- [Z] ou [u] pour accélérer (en mode tryhard sur le bouton)
+- [Q] ou [H] pour aller à gauche 
+- [D] ou [K] pour aller à droite
+- [S] ou [J] pour sauter/esquiver
 
 #### Comment se déroule le jeu ?
 

@@ -56,12 +56,18 @@ export class Player {
         // positionGizmo.attachedMesh = this.mesh;
 
         // Ajoutez ici la logique pour positionner le joueur, ajouter des animations, etc.
-        if (this.playerIndex==0){
-            console.log("p1")
-            this.keyMap = new KeyMap("z","q","d","s")
-        }else{
-            console.log("p2")
-            this.keyMap = new KeyMap("u","h","k","j")
+        let layout = InputController.detectKeyboardLayout();
+        // console.log(layout);
+        if (this.playerIndex == 0) {
+            console.log("p1");
+            if (layout === 'AZERTY') {
+                this.keyMap = new KeyMap("z", "q", "d", "s");
+            } else {
+                this.keyMap = new KeyMap("w", "a", "d", "s");
+            }
+        } else {
+            console.log("p2");
+            this.keyMap = new KeyMap("u", "h", "k", "j");
         }
     }
 

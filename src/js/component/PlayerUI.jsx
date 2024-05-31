@@ -15,7 +15,7 @@ export default function PlayerUI(props){
             <StatBar
                 type={"boost"}
                 color = {"rgb(255,249,126)"}
-                gradient = {"linear-gradient(0deg, rgb(255, 249, 126) 30%, rgb(255, 0, 0) 77%, rgb(106 5 5) 100%)"}
+                // gradient = {"linear-gradient(0deg, rgb(255, 249, 126) 30%, rgb(255, 0, 0) 77%, rgb(106 5 5) 100%)"}
                 value = {15}
             />
         </div>

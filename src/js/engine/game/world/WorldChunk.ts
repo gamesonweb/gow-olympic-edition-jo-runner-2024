@@ -4,6 +4,8 @@ import {Mesh, Scene, Vector3} from "@babylonjs/core";
 import WorldBuilding from "./WorldBuilding.ts";
 import ObstacleABS from "../obstacle/ObstacleABS.ts";
 import MudPuddleOBS from "../obstacle/impl/MudPuddleOBS.ts";
+import WaterBottleOBS from "../obstacle/impl/WaterBottleOBS.ts";
+import {Player} from "../player/Player.ts";
 
 export default class WorldChunk{
     private ground:Mesh;
@@ -50,6 +52,10 @@ export default class WorldChunk{
         const mud = new MudPuddleOBS(scene,new Vector3(position.x, position.y+0.001,position.z));
         this.obstacles.push(mud)
 
+        //Adding test water
+        const waterBottle = new WaterBottleOBS(scene,new Vector3(position.x+0.3,position.y+0.001,position.z));
+        this.obstacles.push(waterBottle)
+
         // @ts-ignore
         this.chunkMesh = BABYLON.Mesh.MergeMeshes([this.buildings[0].building,this.buildings[1].building,this.ground],
             true, false, null, false, true);
@@ -77,6 +83,12 @@ export default class WorldChunk{
 
      getIndex() {
         return this.index;
+    }
+
+    update(dt:number,player:Player) {
+        this.obstacles.forEach(obstacle => {
+            obstacle.checkIfTouched(player);
+        })
     }
 
     static multiplyWithRandomFactor(x:number, facteurMax:number) {

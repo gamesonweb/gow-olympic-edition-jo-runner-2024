@@ -11,9 +11,9 @@ export default abstract class ObstacleABS {
 
 
     checkIfTouched(player : Player){
-
+        
     }
-    onTouched(){
+    onTouched(player : Player){
         //Implement
     }
 

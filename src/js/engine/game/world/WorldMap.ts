@@ -9,6 +9,7 @@ export default class WorldMap{
     private lastChunkIndex:number = 0;
     private firstChunkIndex:number = 0;
     private displayedChunks:number;
+    private deletedChunkAmount:number = 0
 
     private static HIDDING_OFFSET = 1.25;
     private static DISPLAY_OFFSET: number = 8;
@@ -38,9 +39,23 @@ export default class WorldMap{
             if (chunk.getZ()+WorldMap.HIDDING_OFFSET<RunnerEngine.getPlayer(playerOrder[1]).getZ()){
                 //remove passed chunk
                 this.removeChunk(chunk);
+                this.deletedChunkAmount++;
             }
 
         })
+
+
+
+        playerOrder.forEach((playerId) => {
+            const player = RunnerEngine.getPlayer(playerId);
+            const playerChunk = this.getChunkIndexFromPosition(player.getZ());
+            this.chunks.forEach((chunk) =>{
+                chunk.update(deltaTime,player)
+            })
+
+            // console.log(`Player ${playerId} is in chunk ${playerChunk}`);
+        });
+        // console.log(RunnerEngine.getPlayer(0).getZ(),this.deletedChunkAmount)
 
         // Add chunks in front of the first player
         while (this.lastChunkIndex < RunnerEngine.getPlayer(playerOrder[0]).getZ() + WorldMap.DISPLAY_OFFSET) {
@@ -67,6 +82,10 @@ export default class WorldMap{
 
      randomIntFromInterval(min:number, max:number) { // min and max included
         return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    getChunkIndexFromPosition(zPosition: number): number {
+        return Math.floor(zPosition);
     }
 
 }

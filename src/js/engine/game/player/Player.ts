@@ -43,7 +43,7 @@ export class Player {
         this.camera.maxZ = 100;
         this.camera.minZ = 0.01;
         // this.mesh.renderingGroupId = 2;
-        this.mesh.position = new Vector3(0,Const.PLAYER_MIN_Y,0) // Y hauteur
+        this.mesh.position = new Vector3((index-0.5)*0.3,Const.PLAYER_MIN_Y,0) // Y hauteur
         const angle = Math.PI / 45 ; // Angle d'inclinaison en radians
         this.inputController = new InputController(scene);
         this.baseVelocity = 0.2;

@@ -73,14 +73,14 @@ export default class WorldMap{
     }
 
     createChunk(index: number) {
-        const rType = this.randomIntFromInterval(1,9) ;
-        const lType =this.randomIntFromInterval(1,9) ;
+        const rType = WorldMap.randomIntFromInterval(1,9) ;
+        const lType =WorldMap.randomIntFromInterval(1,9) ;
         const newChunk = new WorldChunk(this.scene, new Vector3(0, 0, index), index,lType,rType);
         this.chunks.push(newChunk);
     }
 
 
-     randomIntFromInterval(min:number, max:number) { // min and max included
+     static randomIntFromInterval(min:number, max:number) { // min and max included
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
 

@@ -6,6 +6,7 @@ import ObstacleABS from "../obstacle/ObstacleABS.ts";
 import MudPuddleOBS from "../obstacle/impl/MudPuddleOBS.ts";
 import WaterBottleOBS from "../obstacle/impl/WaterBottleOBS.ts";
 import {Player} from "../player/Player.ts";
+import WorldMap from "./WorldMap.ts";
 
 export default class WorldChunk{
     private ground:Mesh;
@@ -48,14 +49,9 @@ export default class WorldChunk{
             false));
 
 
-        //Adding test mud
-        const mud = new MudPuddleOBS(scene,this,new Vector3(position.x, position.y+0.001,position.z));
-        this.obstacles.push(mud)
 
-        //Adding test water
-        const waterBottle = new WaterBottleOBS(scene,this,new Vector3(position.x+0.3,position.y+0.001,position.z));
-        this.obstacles.push(waterBottle)
-
+        this.placeWaterBottle(scene,position);
+        this.placeMudPaddle(scene,position);
         // @ts-ignore
         this.chunkMesh = BABYLON.Mesh.MergeMeshes([this.buildings[0].building,this.buildings[1].building,this.ground],
             true, false, null, false, true);
@@ -107,6 +103,26 @@ export default class WorldChunk{
             // Dispose of the mesh to remove it from the scene
             obstacle.dispose();
         }
+    }
+
+    placeWaterBottle(scene:Scene,position:Vector3){
+        //Adding test water
+        const choice = WorldMap.randomIntFromInterval(-3,3);
+
+        if (choice > 0){
+            for (let i = 0; i < choice; i++){
+                const waterBottle = new WaterBottleOBS(scene,this,new Vector3(WorldChunk.multiplyWithRandomFactor(position.x-0.3,0.75),position.y+0.001,position.z));
+                this.obstacles.push(waterBottle)
+            }
+        }
+
+    }
+
+    placeMudPaddle(scene:Scene,position:Vector3){
+        //Adding test water
+        //Adding test mud
+        const mud = new MudPuddleOBS(scene,this,new Vector3(WorldChunk.multiplyWithRandomFactor(position.x-0.3,0.75),position.y+0.001,position.z));
+        this.obstacles.push(mud)
     }
 }
 

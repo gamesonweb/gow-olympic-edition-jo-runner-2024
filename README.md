@@ -2,6 +2,8 @@
 
 ### JO Runner 2024, par GRUAU Elyan, PATUREAU Romain, et TILLE Logann en Licence 3 MIAGE NICE
 
+Le jeu est disponible ici : https://gamesonweb.github.io/gow-olympic-edition-jo-runner-2024/
+
 #### Quel est le but du jeu ?
 
 JO Runner 2024 est un jeu en 1 contre 1. Les deux joueurs doivent jouer sur la même machine, sur le même écran, et surtout sur le même clavier.

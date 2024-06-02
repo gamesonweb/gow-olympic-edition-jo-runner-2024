@@ -16,5 +16,6 @@ export default class MudPuddleOBS extends PuddleABS {
         })
         this.mesh.position = position;
         this.mesh.material = new MudMaterial(scene,1);
+
     }
 }

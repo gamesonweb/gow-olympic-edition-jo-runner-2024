@@ -1,21 +1,6 @@
 # GOW2024
 
-install
-```bash
-npm install -D @babylonjs/core
-```
-run
-```bash
-npm run dev
-```
-
-## Env
-- Webstorm
-- Github
-
-
-
-### JO Runner 2024, par GRUAU ELYAN, PATUREAU ROMAIN, et TILLE LOGANN en Licence 3 MIAGE NICE
+### JO Runner 2024, par GRUAU Elyan, PATUREAU Romain, et TILLE Logann en Licence 3 MIAGE NICE
 
 #### Quel est le but du jeu ?
 
@@ -26,12 +11,9 @@ Le joueur qui atteindra le fin du parcours (1000M) en premier sera declaré gagn
 
 C'est bien là le but ! Les joueurs sont coudes à coudes, se battant pour gagner la course. Nous souhaitons retrouver les anciennes façons de jouer de type arcade, avec les deux joueurs serrés, prêts à en découdre.
 
-#### Comment se déroule une partie ?
 
-Les deux joueurs se placent côte à côte, face au clavier, de manière à ce que chacun ait accès aux touches. Ils peuvent modifier leurs touches dans les paramètres "joueur 1" et "joueur 2" sur la page principale du jeu. Une fois prêts, ils peuvent commencer à jouer.
-
-**Keymap de base :**
-- [Z] ou [u] pour accélérer (en mode tryhard sur le bouton)
+#### Touches
+- [Z] ou [U] pour accélérer (Il faut appuyer le plus vite possible)
 - [Q] ou [H] pour aller à gauche 
 - [D] ou [K] pour aller à droite
 - [S] ou [J] pour sauter/esquiver
@@ -64,3 +46,28 @@ Ils apparaîtront de façon aléatoire. Les challenges seront choisis dans un po
 - **Beach Volley :** vous marchez dans le sable, ce qui vous ralentit. Faites attention aux smashs et aux crabes qui ne vous veulent pas que du bien.
 
 
+## Perspective d'amélioration
+Malheureusement, le jeu n'est a ce jour pas fini, 
+En effet, de nombreuses fonctionnalités sont manquantes.
+### Fonctionnalités implémentées 
+- Mouvements : Saut, boost(sprint), avancer, droite, gauche ...
+- Une map infinie
+- Des placements d'obstacles aléatoires
+- une jauge d'hydratation qui s'épuise en courant
+- des bouteilles d'eaux qui hydratent le joueur
+- des assets fait maison (ok, sauf pour l'arbre)
+### Fonctionnalités à implémenter
+- Les mini jeux
+- les malus : Détritus, crottes de chiens, flaques de boue qui ralentissent, des membres d'association qui essaient d'intercepter les joueurs
+- les boosters : Bonus de recyclage, eau pour retirer la boue du jour 
+- Un écran de début (Existe, mais pas implémenter), de fin
+- Détecter la fin (Quand l'un des deux joueurs atteint les 1000m)
+## Installation du projet
+install
+```bash
+npm install -D @babylonjs/core
+```
+run
+```bash
+npm run dev
+```

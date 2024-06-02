@@ -49,11 +49,11 @@ export default class WorldChunk{
 
 
         //Adding test mud
-        const mud = new MudPuddleOBS(scene,new Vector3(position.x, position.y+0.001,position.z));
+        const mud = new MudPuddleOBS(scene,this,new Vector3(position.x, position.y+0.001,position.z));
         this.obstacles.push(mud)
 
         //Adding test water
-        const waterBottle = new WaterBottleOBS(scene,new Vector3(position.x+0.3,position.y+0.001,position.z));
+        const waterBottle = new WaterBottleOBS(scene,this,new Vector3(position.x+0.3,position.y+0.001,position.z));
         this.obstacles.push(waterBottle)
 
         // @ts-ignore
@@ -97,6 +97,16 @@ export default class WorldChunk{
 
         // Multiplier x par le facteur aléatoire et le retourner
         return x + randomFactor;
+    }
+
+    removeObstacle(obstacle:ObstacleABS){
+        const index = this.obstacles.indexOf(obstacle);
+        if (index !== -1) {
+            // Remove the obstacle from the array
+            this.obstacles.splice(index, 1);
+            // Dispose of the mesh to remove it from the scene
+            obstacle.dispose();
+        }
     }
 }
 

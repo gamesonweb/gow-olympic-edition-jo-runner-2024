@@ -4,12 +4,13 @@ import * as BABYLON from "@babylonjs/core";
 import MudMaterial from "../../../../materials/impl/MudMaterial.ts";
 import WaterBottleMaterial from "../../../../materials/impl/WaterBottleMaterial.ts";
 import {Player} from "../../player/Player.ts";
+import WorldChunk from "../../world/WorldChunk.ts";
 
 export default class WaterBottleOBS extends ObstacleABS {
 
     static WATER_QTY = 7.5;
-    constructor(scene: Scene, position: Vector3) {
-        super();
+    constructor(scene: Scene,parentChunk:WorldChunk, position: Vector3) {
+        super(parentChunk);
         this.mesh = BABYLON.MeshBuilder.CreateGround('WaterBottle',{
             height : 0.1,
             width : 0.1,
@@ -29,7 +30,7 @@ export default class WaterBottleOBS extends ObstacleABS {
 
 
     onTouched(player: Player) {
-        player.addWater(WaterBottleOBS.WATER_QTY);
         super.onTouched(player);
+        player.addWater(WaterBottleOBS.WATER_QTY);
     }
 }

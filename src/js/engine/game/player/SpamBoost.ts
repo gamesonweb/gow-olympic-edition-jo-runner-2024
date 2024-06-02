@@ -24,7 +24,7 @@ export default class SpamBoost{
 
             let increase = this.valueIncrease
             if (this.value <= SpamBoost.MAX/4){
-                increase *= 2;
+                increase *= 2.7;
             }else if (this.value >= SpamBoost.MAX/3){
                 increase /= 2 ;
             }

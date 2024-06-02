@@ -1,5 +1,6 @@
 import {Mesh, Vector3} from "@babylonjs/core";
 import {Player} from "../player/Player.ts";
+import WorldChunk from "../world/WorldChunk.ts";
 
 export default abstract class ObstacleABS {
     protected position : Vector3;
@@ -11,9 +12,12 @@ export default abstract class ObstacleABS {
     static X_OFFSET : number = 0.01;
     static Y_OFFSET : number = 0.01;
 
+    parentChunk : WorldChunk;
 
 
-
+    constructor(parentChunk: WorldChunk) {
+        this.parentChunk = parentChunk;
+    }
 
     checkIfTouched(player : Player){
         if (this.isColliding(player)) {
@@ -38,7 +42,7 @@ export default abstract class ObstacleABS {
     onTouched(player : Player){
         //Implement
         // console.log("Touched !")
-        this.dispose()
+        this.parentChunk.removeObstacle(this);
     }
 
     dispose() {

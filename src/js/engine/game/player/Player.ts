@@ -7,6 +7,8 @@ import Const from "../../../const/Const.ts";
 import SpamBoost from "./SpamBoost.ts";
 import UI from "../../../ui/UI.ts";
 import KeyMap from "./KeyMap.ts";
+import WaterBottleMaterial from "../../../materials/impl/WaterBottleMaterial.ts";
+import PlayerMaterial from "../../../materials/impl/PlayerMaterial.ts";
 
 
 export class Player {
@@ -35,8 +37,8 @@ export class Player {
     constructor(scene: BABYLON.Scene,camera: BABYLON.Camera,index: number) {
         // this.mesh = BABYLON.MeshBuilder.CreateBox('playerBox', { size: 0.1}, scene);
         this.playerIndex = index;
-        this.width = 0.1;
-        this.height = 0.1;
+        this.width = 0.2;
+        this.height = 0.2;
         this.mesh = BABYLON.MeshBuilder.CreatePlane('playerBox',
             {
                 width: this.width,
@@ -55,6 +57,7 @@ export class Player {
         this.baseVelocity = 0.2;
         this.baseDodgeVelocity = 0.8;
         this.mesh.rotate(BABYLON.Axis.X, angle, BABYLON.Space.LOCAL);
+        this.mesh.material = new PlayerMaterial(scene,-1,index);
         // this.mesh.receiveShadows =true;
 
 
@@ -90,7 +93,7 @@ export class Player {
 
         //Spam Boost
         if (this.inputController.isKeyDown(this.keyMap.boost) && this.waterLevel>=0){
-            console.log("spamBoost")
+            // console.log("spamBoost")
             this.spamBoost.spam(dt);
         }else {
             this.spamBoost.unspam(dt);
@@ -146,7 +149,7 @@ export class Player {
         //Water level variation
         const spamBoostPercent = this.spamBoost.getPercent();
         if (this.waterLevel>0){
-            this.waterLevel -= spamBoostPercent * dt * 0.02 + 0.001;
+            this.waterLevel -= spamBoostPercent * dt * 0.03 + 0.002;
             // console.log(this.waterLevel)
         }
 
@@ -181,11 +184,11 @@ export class Player {
     }
 
     getWidth(){
-        return this.width;
+        return this.width/2;
     }
 
     getHeight(){
-        return this.height;
+        return this.height/2;
     }
 
 

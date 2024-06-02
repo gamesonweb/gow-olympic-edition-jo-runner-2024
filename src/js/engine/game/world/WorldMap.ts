@@ -11,6 +11,7 @@ export default class WorldMap{
     private displayedChunks:number;
 
     private static HIDDING_OFFSET = 1.25;
+    private static DISPLAY_OFFSET: number = 8;
     constructor(scene : Scene,displayedChunks : number = 3){
         this.scene = scene;
         this.chunks = [];
@@ -25,16 +26,24 @@ export default class WorldMap{
 
     update(deltaTime : number ){
         // console.log(deltaTime)
-
-        //remove passed chunk of last place
-        let lastPlaceChunk : WorldChunk = this.chunks[this.firstChunkIndex];
-        if (lastPlaceChunk.getZ()+WorldMap.HIDDING_OFFSET < Math.min(RunnerEngine.getPlayer(0).getZ(), RunnerEngine.getPlayer(1).getZ())){
-            this.removeChunk(lastPlaceChunk);
+        let playerOrder = RunnerEngine.getPlayerOrder();
+        //In case equality
+        if (playerOrder.length==0){
+            playerOrder = [0,1];
         }
+        this.chunks.forEach((chunk) =>{
+            // console.log(RunnerEngine.getPlayer(0).getZ())
 
-        //create new chunk for first place
-        let firstPlaceChunk : WorldChunk = this.chunks[this.lastChunkIndex - this.displayedChunks+1];
-        if (firstPlaceChunk.getZ()+WorldMap.HIDDING_OFFSET < Math.max(RunnerEngine.getPlayer(0).getZ(), RunnerEngine.getPlayer(1).getZ())){
+            //Removal of the chunk
+            if (chunk.getZ()+WorldMap.HIDDING_OFFSET<RunnerEngine.getPlayer(playerOrder[1]).getZ()){
+                //remove passed chunk
+                this.removeChunk(chunk);
+            }
+
+        })
+
+        // Add chunks in front of the first player
+        while (this.lastChunkIndex < RunnerEngine.getPlayer(playerOrder[0]).getZ() + WorldMap.DISPLAY_OFFSET) {
             this.lastChunkIndex++;
             this.createChunk(this.lastChunkIndex);
         }

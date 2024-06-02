@@ -40,4 +40,49 @@ export default class RunnerEngine {
             worldMap.update(deltaTime);
         })
     }
+
+    static getFirstPlayer(){
+        let p1 = this.players[0];
+        let p2 = this.players[1];
+        if (!p1 || !p2){
+            return -1;
+        }
+
+        if (p1.getZ()<p2.getZ()){
+            return p2.getPlayerIndex();
+        }else if (p1.getZ()>p2.getZ()){
+            return p1.getPlayerIndex();
+        }else {
+            console.log("Player are equal")
+            return -1;
+        }
+    }
+
+    static getLastPlayer(){
+        let firstPlayer = this.getFirstPlayer();
+        if (firstPlayer == 0){
+            return 1;
+        }else if (firstPlayer==1){
+            return 0;
+        }else{
+            return -1;
+        }
+    }
+
+    static getPlayerOrder() {
+        let p1 = this.players[0];
+        let p2 = this.players[1];
+        if (!p1 || !p2){
+            return [];
+        }
+
+        if (p1.getZ()<p2.getZ()){
+            return [p2.getPlayerIndex(), p1.getPlayerIndex()];
+        }else if (p1.getZ()>p2.getZ()){
+            return [p1.getPlayerIndex(),p2.getPlayerIndex()];
+        }else {
+            console.log("Player are equal")
+            return [];
+        }
+    }
 }

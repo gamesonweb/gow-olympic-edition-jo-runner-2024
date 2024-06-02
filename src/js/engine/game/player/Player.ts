@@ -162,4 +162,8 @@ export class Player {
     getZ() {
         return this.mesh.position.z;
     }
+
+    getPlayerIndex() {
+        return this.playerIndex;
+    }
 }

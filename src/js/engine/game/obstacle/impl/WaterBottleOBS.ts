@@ -3,8 +3,11 @@ import {Scene, Vector3} from "@babylonjs/core";
 import * as BABYLON from "@babylonjs/core";
 import MudMaterial from "../../../../materials/impl/MudMaterial.ts";
 import WaterBottleMaterial from "../../../../materials/impl/WaterBottleMaterial.ts";
+import {Player} from "../../player/Player.ts";
 
 export default class WaterBottleOBS extends ObstacleABS {
+
+    static WATER_QTY = 7.5;
     constructor(scene: Scene, position: Vector3) {
         super();
         this.mesh = BABYLON.MeshBuilder.CreateGround('WaterBottle',{
@@ -18,7 +21,15 @@ export default class WaterBottleOBS extends ObstacleABS {
         this.mesh.rotate(new Vector3(-1,0,0),Math.PI/2);
 
 
+        // this.sizeX = this.mesh. ;
+
+
+
     }
 
 
+    onTouched(player: Player) {
+        player.addWater(WaterBottleOBS.WATER_QTY);
+        super.onTouched(player);
+    }
 }

@@ -29,12 +29,18 @@ export class Player {
     private keyMap : KeyMap = null;
     // private
 
+    private width : number ;
+    private height : number ;
+
     constructor(scene: BABYLON.Scene,camera: BABYLON.Camera,index: number) {
         // this.mesh = BABYLON.MeshBuilder.CreateBox('playerBox', { size: 0.1}, scene);
         this.playerIndex = index;
+        this.width = 0.1;
+        this.height = 0.1;
         this.mesh = BABYLON.MeshBuilder.CreatePlane('playerBox',
             {
-                size: 0.1,
+                width: this.width,
+                height : this.height
 
 
             }, scene);
@@ -162,8 +168,35 @@ export class Player {
     getZ() {
         return this.mesh.position.z;
     }
+    getX() {
+        return this.mesh.position.x;
+    }
+
+    getY() {
+        return this.mesh.position.y;
+    }
 
     getPlayerIndex() {
         return this.playerIndex;
+    }
+
+    getWidth(){
+        return this.width;
+    }
+
+    getHeight(){
+        return this.height;
+    }
+
+
+    getDepth() {
+        return 0.1;
+    }
+
+    addWater(nb:number){
+        this.waterLevel += nb;
+        if (this.waterLevel >= 100){
+            this.waterLevel = 100;
+        }
     }
 }
